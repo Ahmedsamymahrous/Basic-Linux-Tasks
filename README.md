@@ -11,9 +11,10 @@ In this repo we will:
 
 
 ## Prerequisites 
-* Python 3. 
+* Python 3
 * Ansible 2.9.6
 * Terraform >= 0.14.9
+* AWS account 
 
 ## (1) Provision The Infrastructure on AWS using Terraform
 ```sh
@@ -66,6 +67,13 @@ Min   CPU(%)   Free Memory(%)  Used Memory(%)  Cached Memory(%)
 5     23.32%   2.84%           80.56%          16.60%
 -----------------------------------------------------------------
 ```
-
-
+## (5) Bash script to switch between JAVA versions
+You can use this command:
+```sh
+sudo update-alternatives --config java
+```
+Or this for simplicity:
+```sh
+./java-switcher.sh
+```
 
