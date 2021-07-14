@@ -72,7 +72,7 @@ You can use this command:
 ```sh
 sudo update-alternatives --config java
 ```
-Or this for simplicity:
+Or use this for simplicity:
 ```sh
 ./java-switcher.sh
 ```
