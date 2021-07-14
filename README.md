@@ -16,6 +16,9 @@ In this repo we will:
 * Terraform >= 0.14.9
 
 ## (1) Provision The Infrastructure on AWS using Terraform
+```sh
+terraform apply
+```
 Terraform code that: 
 * Create CentOS 7 EC2 instance.
 * Open the SSH port.
@@ -23,6 +26,9 @@ Terraform code that:
 * Attach this volume to the EC2 instance.
 
 ## (2) Configure the EC2 server using Ansible
+```sh
+ansible-playbook -i hosts ansible-playbook.yml --private-key /the/path/to/file.pem
+```
 Ansible playbook that:
 * Install OpenJDK 8 & 11, Oracle JDK 8.
 * Remove MariaDB (to avoid any conflicts between MariaDB & MySQL)
@@ -31,4 +37,9 @@ Ansible playbook that:
 * Create "/incorta" directory.
 * Mount the external disk under "/incorta" with ext4 format.
 * Copy the shell scripts to the target host.
+
+## (3) Use SSH tunneling to connect to MySQL
+```sh
+ssh -L 3306:localhost:3306 -i /the/path/to/file.pem centos@IP-ADDRESS
+```
 
