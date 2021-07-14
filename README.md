@@ -2,6 +2,7 @@
 In this repo we will:
 * Create a Linux CentOS machine on AWS using Terraform.
 * Create Incorta user using Ansible.
+* Allow Incorta user to switch to root without a password using Ansible.
 * Attach external disk with ext4 format then mount it under /incorta with Incorta ownership, using Terraform
 * Install all JAVA versions (OpenJDK 8 & 11, Oracle JDK8) using Ansible.
 * Create a switchable bash script to switch between JAVA versions.
@@ -35,6 +36,7 @@ Ansible playbook that:
 * Remove MariaDB (to avoid any conflicts between MariaDB & MySQL)
 * Install MySQL 5.6 and start its service.
 * Create "incorta" user with sudo privileges.
+* Allow "incorta" user to switch to root without a password.
 * Create "/incorta" directory.
 * Mount the external disk under "/incorta" with ext4 format.
 * Copy the shell scripts to the target host.
