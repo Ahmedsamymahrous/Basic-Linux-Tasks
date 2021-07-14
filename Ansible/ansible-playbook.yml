@@ -1,0 +1,94 @@
+- hosts: centos  
+  remote_user: centos  
+  become: yes
+  tasks:
+
+  - name: Update yum
+    yum:
+      update_cache: yes
+
+########### Install JAVA Versions ##########
+
+  - name: Install OpenJDK 11
+    yum:
+      name: java-11-openjdk
+      state: present
+
+  - name: Install OpenJDK 8
+    yum:
+      name: java-1.8.0-openjdk
+      state: present
+
+  - name: Copy the Oracle JDK 8 installer
+    copy:
+      src: ../jdk-8u291-linux-x64.rpm
+      dest: /opt    
+      mode: 0755 
+
+  - name: Install Oracle JDK 8 
+    shell: 
+      cmd: rpm -ivh jdk-8u291-linux-x64.rpm
+      chdir: /opt
+
+
+############### Install MySQL ###############
+
+  - name: Remove MariaDB to avoid any conflict with MySQL
+    yum:
+      name: mariadb-libs.x86_64
+      state: absent
+
+  - name: Installing MySQL Repo
+    yum:
+      name: http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+      state: present
+
+  - name: Install MySQL 5.6
+    yum:
+      name: mysql-server
+      state: present
+
+  - name: Start the MySQL service
+    service: 
+      name: mysqld
+      state: started
+      enabled: true
+
+  #############################################
+
+  - name: Create incorta user with sudo privileges
+    user:
+      name: incorta
+      groups: wheel
+      append: yes
+      password: "{{ 'incorta2013' | password_hash('sha512','A512') }}"
+
+
+  - name: Create a ext4 filesystem
+    filesystem:
+      fstype: ext4
+      dev: /dev/xvdf    
+
+
+  - name: Creates "/incorta" directory
+    file:
+      path: /incorta
+      state: directory
+      owner: incorta
+      mode: 0775
+      recurse: yes
+
+
+  - name: Mount the volume to "/incorta" directory 
+    mount:
+      path: /incorta
+      src: /dev/xvdf
+      fstype: ext4
+      state: mounted
+
+
+  - name: Copy shell-scripts directory to /home/shell-scripts
+    copy:
+      src: ../shell-scripts
+      dest: /home/centos/shell-scripts
+      mode: 0755 

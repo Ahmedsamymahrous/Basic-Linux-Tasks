@@ -1,0 +1,5 @@
+**/.terraform/*
+*.hcl
+*.tfstate
+*.backup
+/jdk-8u291-linux-x64.rpm
