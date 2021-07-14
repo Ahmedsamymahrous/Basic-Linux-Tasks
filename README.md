@@ -53,7 +53,7 @@ Then, run the script:
 ```sh
 ./utilization.sh
 ```
-The expected output:
+The expected output will be like this:
 ```sh
 -----------------------------------------------------------------
 OS NAME="CentOS Linux"
@@ -75,5 +75,20 @@ sudo update-alternatives --config java
 Or this for simplicity:
 ```sh
 ./java-switcher.sh
+```
+
+The expected output will be like this:
+
+```sh
+There are 3 programs which provide 'java'.
+
+  Selection    Command
+-----------------------------------------------
+   1           java-11-openjdk.x86_64 (/usr/lib/jvm/java-11-openjdk-11.0.11.0.9-1.el7_9.x86_64/bin/java)
+*+ 2           java-1.8.0-openjdk.x86_64 (/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.292.b10-1.el7_9.x86_64/jre/bin/java)
+   3           /usr/java/jdk1.8.0_291-amd64/bin/java
+
+Enter to keep the current selection[+], or type selection number: 
+
 ```
 
