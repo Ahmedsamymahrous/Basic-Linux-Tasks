@@ -75,8 +75,16 @@
       path: /incorta
       state: directory
       owner: incorta
+      group: incorta
       mode: 0775
       recurse: yes
+      
+      
+  - name: Make "incorta" user switch to root without a password
+      copy:
+        dest: /etc/sudoers.d/incorta
+        mode: 0400
+        content: 'incorta ALL=(ALL) NOPASSWD:ALL'
 
 
   - name: Mount the volume to "/incorta" directory 
