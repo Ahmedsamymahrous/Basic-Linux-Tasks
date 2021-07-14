@@ -43,3 +43,29 @@ Ansible playbook that:
 ssh -L 3306:localhost:3306 -i /the/path/to/file.pem centos@IP-ADDRESS
 ```
 
+## (4) Bash script to get the CPU and Memory utilization
+After clone this repo, change the file permission to be executable:
+```sh
+sudo chmod +x ./utilization.sh
+```
+Then, run the script:
+```sh
+./utilization.sh
+```
+The expected output:
+```sh
+-----------------------------------------------------------------
+OS NAME="CentOS Linux"
+-----------------------------------------------------------------
+Min   CPU(%)   Free Memory(%)  Used Memory(%)  Cached Memory(%)
+-----------------------------------------------------------------
+1     23.32%   2.54%           80.60%          16.86%
+2     23.32%   2.82%           80.58%          16.60%
+3     23.32%   2.84%           80.56%          16.60%
+4     23.32%   2.84%           80.56%          16.60%
+5     23.32%   2.84%           80.56%          16.60%
+-----------------------------------------------------------------
+```
+
+
+
