@@ -1,4 +1,4 @@
-# Basic Automated Linux Tasks
+# Automated Linux Tasks
 In this repo we will:
 * Create a Linux CentOS machine on AWS using Terraform.
 * Create Incorta user using Ansible.
